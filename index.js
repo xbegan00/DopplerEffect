@@ -1,5 +1,6 @@
 // to play 1 second we need array of 44100 numbers
-const sampleRate = 44100;
+//const sampleRate = 44100;
+const sampleRate = 220500;
 
 // create a typed array of size 44100 float numbers
 const sineWaveArray = new Float32Array(sampleRate);
