@@ -1,95 +1,136 @@
 <html>
-  <button onclick="playSineWave440hz()">Sine wave  normal f</button>
-  <button onclick="playSineWave800hz()">Sine wave higher f</button>
-  <button onclick="playSineWave200hz()">Sine wave lower f</button>  
-  <script src="index.js"></script>
-  
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.js"></script>
-	<script>
-		let x = 50;
-		let y = 50;
-		let xSpeed = 5;
-		let ySpeed = 3;	  
-		let hitSound;
-		
-		// Ensure P5.js functions are available in the global scope
-		window.setup = function() {			
-		createCanvas(800, 400);
-		// Create buttons
-		let button1 = createButton('Set Speed 1');
-      	let button2 = createButton('Set Speed 2');
+  <head>	
+    <meta charset="utf-8" />    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />    
+    <title>Doppleruv efekt</title>		
+  </head>
+  <body>  
+    <header>
+    	Doppleruv efekt
+  	</header>	
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.js"></script>
+    <script>
+      let x = 50;
+      let y = 50;
+      let xSpeed = 5;
+      let ySpeed = 3;	  
+      let hitSound;
+      
+      // Ensure P5.js functions are available in the global scope
+      window.setup = function() {			
+      createCanvas(800, 400);
+      // Create buttons
+      let button1 = createButton('Set Speed 1');
+          let button2 = createButton('Set Speed 2');
 
-		// Set button positions
-		button1.position(10, height + 10);
-		button2.position(120, height + 10);
+      // Set button positions
+      button1.position(10, height + 10);
+      button2.position(120, height + 10);
 
-		// Set button events
-		button1.mousePressed(setSpeed1);
-		button2.mousePressed(setSpeed2);
-		
-	  };
-  
-	  window.draw = function() {
-		background(220);
-  
-		// Draw the bouncing ball
-		fill(0, 128, 255);
-		ellipse(x, y, 30, 30);
-  
-		// Update the ball's position
-		x += xSpeed;
-		y += ySpeed;
-  
-		// Bounce off the walls
-		if (x > width - 15 || x < 15) {
-		  xSpeed *= -1;
-		  playHitSound();
-		}
-  
-		if (y > height - 15 || y < 15) {
-		  ySpeed *= -1;
-		  playHitSound();
-		}
-	  };  
-	    
-	  // Function to change the speed of the ball
-	  function setSpeed1() {
-      xSpeed = 5;
-      ySpeed = 3;
-    }
+      // Set button events
+      button1.mousePressed(setSpeed1);
+      button2.mousePressed(setSpeed2);
+      
+      };
+    
+      window.draw = function() {
+      background(220);
+    
+      // Draw the bouncing ball
+      fill(0, 128, 255);
+      ellipse(x, y, 30, 30);
+    
+      // Update the ball's position
+      x += xSpeed;
+      y += ySpeed;
+    
+      // Bounce off the walls
+      if (x > width - 15 || x < 15) {
+        xSpeed *= -1;
+        playHitSound();
+      }
+    
+      if (y > height - 15 || y < 15) {
+        ySpeed *= -1;
+        playHitSound();
+      }
+      };  
+        
+      // Function to change the speed of the ball
+      function setSpeed1() {
+        xSpeed = 5;
+        ySpeed = 3;
+      }
 
-    function setSpeed2() {
-      xSpeed = 8;
-      ySpeed = 4;
-    }
+      function setSpeed2() {
+        xSpeed = 8;
+        ySpeed = 4;
+      }
 
-	// Function to play the hit sound
-    function playHitSound() {    
-		
-    }
-  
-	  // Run P5.js setup function when the document is ready
-	  document.addEventListener('DOMContentLoaded', () => {
-		setup();
-	  });
-  
-	  // Run P5.js draw function continuously
-	  window.requestAnimationFrame(draw);
-	</script>
-	<!-- Script section for handling button clicks -->
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-		document.getElementById('speedButton1').addEventListener('click', function() {
-			changeSpeed(5, 3);
-		});
-	
-		document.getElementById('speedButton2').addEventListener('click', function() {
-			changeSpeed(8, 4);
-		});
-	
-		// Add more event listeners for additional buttons as needed
-		});
-	</script>
+    // Function to play the hit sound
+      function playHitSound() {    
+      
+      }
+    
+      // Run P5.js setup function when the document is ready
+      document.addEventListener('DOMContentLoaded', () => {
+      setup();
+      });
+    
+      // Run P5.js draw function continuously
+      window.requestAnimationFrame(draw);
+    </script>
+    <!-- Script section for handling button clicks -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('speedButton1').addEventListener('click', function() {
+        changeSpeed(5, 3);
+      });
+    
+      document.getElementById('speedButton2').addEventListener('click', function() {
+        changeSpeed(8, 4);
+      });
+    
+      // Add more event listeners for additional buttons as needed
+      });
+    </script>
+    <button onclick="playSineWave440hz()">Sine wave  normal f</button>  
+    <script src="index.js"></script> 
+  </body>
 </html>
+
+
+<style>
+  /*Styles*/
+  body {
+      background-color: rgb(53, 17, 58);
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: darkred;
+      padding: 10px;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+    }
+
+    nav {
+      background-color: #4589e2;
+      color: rgb(255, 255, 255);
+      padding: 30px;
+      width: 400px;
+    }
+
+    h2 {
+      font-size: 28px; /* Adjust the font size for your preferred size */
+    }
+
+    canvas {
+      display: block;
+      margin: 20px auto; /* Adjust the margin for your preferred position */
+      margin-right: 600px; /* Add a margin to move the canvas to the right */
+    }
+  </style>
