@@ -1,19 +1,27 @@
-// to play 1 second we need array of 44100 numbers
+// to play 1 second we need an array of 44100 numbers
 const sampleRate = 44100;
 
 // create a typed array of size 44100 float numbers
-const sineWaveArray = new Float32Array(sampleRate);
+const sineWaveArray440Hz = new Float32Array(sampleRate);
+const sineWaveArray200Hz = new Float32Array(sampleRate);
+const sineWaveArray800Hz = new Float32Array(sampleRate);
 
-const hz = 400;
+// fill all 44100 elements of arrays with Math.sin() values
+for (let i = 0; i < sineWaveArray440Hz.length; i++) {
+  sineWaveArray440Hz[i] = Math.sin((i * Math.PI * 8) / 440);
+}
 
-// fill all 44100 elements of array with Math.sin() values
-for (i = 0; i < sineWaveArray.length; i++) {
-  sineWaveArray[i] = Math.sin(i * Math.PI * 8 / hz);
+for (let i = 0; i < sineWaveArray200Hz.length; i++) {
+  sineWaveArray200Hz[i] = Math.sin((i * Math.PI * 8) / 200);
+}
+
+for (let i = 0; i < sineWaveArray800Hz.length; i++) {
+  sineWaveArray800Hz[i] = Math.sin((i * Math.PI * 8) / 800);
 }
 
 function playSound({ array, sampleRate }) {
   // We have to start with creating AudioContext
-  const audioContext = new AudioContext({sampleRate});
+  const audioContext = new AudioContext({ sampleRate });
   // create audio buffer of the same length as our array
   const audioBuffer = audioContext.createBuffer(1, array.length, sampleRate);
   // this copies our sine wave to the audio buffer
@@ -22,9 +30,17 @@ function playSound({ array, sampleRate }) {
   const source = audioContext.createBufferSource();
   source.connect(audioContext.destination);
   source.buffer = audioBuffer;
-  source.start();  
+  source.start();
 }
 
-function playSineWave400hz() {
-  playSound({ array: sineWaveArray, sampleRate });
+function playSineWave440Hz() {
+  playSound({ array: sineWaveArray440Hz, sampleRate });
+}
+
+function playSineWave200Hz() {
+  playSound({ array: sineWaveArray200Hz, sampleRate });
+}
+
+function playSineWave800Hz() {
+  playSound({ array: sineWaveArray800Hz, sampleRate });
 }
