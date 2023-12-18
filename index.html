@@ -83,6 +83,29 @@
     </script>
     <button onclick="playSineWave440hz()">Sine wave  normal f</button>  
     <script src="index.js"></script> 
+    <h1>F1 doppler efekt</h1>
+
+    <audio id="audioPlayer" controls>
+        <source src="F1soundeffect.mp3" type="audio/mp3">        
+    </audio>
+
+    <button id="playButton">Play</button>
+    <button id="stopButton">Stop</button>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playButton = document.getElementById('playButton');
+        const stopButton = document.getElementById('stopButton');
+
+        playButton.addEventListener('click', () => {
+            audio.play();
+        });
+
+        stopButton.addEventListener('click', () => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    </script>
   </body>
 </html>
 
